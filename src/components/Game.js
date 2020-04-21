@@ -11,14 +11,6 @@ const Game = () => {
   const [revealStatus, setRevealStatus] = useState(false);
   
 
-  const exampleFormat = FIELDS.map((field) => {
-    if (field.key) {
-      return field.placeholder;
-    } else {
-      return field;
-    }
-  }).join(" ");
-
   const submitLine = (newLine) => {
     //push to an array of lines
     const allLines = [...linesSubmitted];
@@ -33,11 +25,28 @@ const Game = () => {
     // console.log(linesSubmitted);
   };
 
+
   const revealPoem = () => {
     //do something on the game level, probably change state of isRevealed
     setRevealStatus(true);
 
   };
+
+
+  const resetGame = () => {
+    setRevealStatus(false);
+    setlinesSubmitted([]);
+    setPlayer(1);
+  }
+
+  
+  const exampleFormat = FIELDS.map((field) => {
+    if (field.key) {
+      return field.placeholder;
+    } else {
+      return field;
+    }
+  }).join(" ");
 
   return (
     <div className="Game">
@@ -56,6 +65,15 @@ const Game = () => {
       {!revealStatus && <PlayerSubmissionForm onSubmitFormCallback={submitLine} player={player} />}
 
       <FinalPoem poem={linesSubmitted} onRevealCallback={revealPoem} revealStatus={revealStatus} />
+      
+      <div className="FinalPoem__reveal-btn-container">
+        <input 
+          type="button" 
+          value="Reset Game / Play Again" 
+          className="PlayerSubmissionForm__submit-btn"
+          onClick={resetGame}
+        />
+      </div>
 
     </div>
   );
