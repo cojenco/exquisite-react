@@ -5,6 +5,10 @@ import FinalPoem from './FinalPoem';
 import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
+
+  const [linesSubmitted, setlinesSubmitted] = useState(0);
+  const [player, setPlayer] = useState(1);
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -12,6 +16,17 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
+  const submitLine = (newLine) => {
+    //push to an array of lines
+
+    console.log('submitted line');
+    console.log(newLine);
+    //setState
+    setlinesSubmitted(linesSubmitted + 1);
+    setPlayer(player + 1);
+    console.log(linesSubmitted);
+  };
 
   return (
     <div className="Game">
@@ -27,7 +42,7 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm onSubmitFormCallback={submitLine} player={player} />
 
       <FinalPoem />
 
