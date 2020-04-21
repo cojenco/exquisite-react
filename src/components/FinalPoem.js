@@ -20,7 +20,7 @@ const FinalPoem = (props) => {
       {props.revealStatus &&
       <section className="FinalPoem__poem">  
         <h3>Final Poem</h3>
-        <p>{readPoem}</p>
+        <section>{readPoem}</section>
 
       </section>
       }
