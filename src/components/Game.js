@@ -51,7 +51,7 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      {!revealStatus && <RecentSubmission />}
+      {!revealStatus && linesSubmitted.length > 0 && <RecentSubmission />}
 
       {!revealStatus && <PlayerSubmissionForm onSubmitFormCallback={submitLine} player={player} />}
 
