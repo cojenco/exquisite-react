@@ -6,8 +6,10 @@ import RecentSubmission from './RecentSubmission';
 
 const Game = () => {
 
-  const [linesSubmitted, setlinesSubmitted] = useState(0);
   const [player, setPlayer] = useState(1);
+  const [linesSubmitted, setlinesSubmitted] = useState([]);  //array of objects
+  const [revealStatus, setRevealStatus] = useState(false);
+  
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -19,13 +21,22 @@ const Game = () => {
 
   const submitLine = (newLine) => {
     //push to an array of lines
+    const allLines = [...linesSubmitted];
+    allLines.push(newLine);
+    setlinesSubmitted(allLines);
 
     console.log('submitted line');
-    console.log(newLine);
-    //setState
-    setlinesSubmitted(linesSubmitted + 1);
-    setPlayer(player + 1);
     console.log(linesSubmitted);
+    //setState
+    // setlinesSubmitted(linesSubmitted + 1);
+    setPlayer(player + 1);
+    // console.log(linesSubmitted);
+  };
+
+  const revealPoem = () => {
+    //do something on the game level, probably change state of isRevealed
+    setRevealStatus(true);
+
   };
 
   return (
@@ -40,11 +51,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      {!revealStatus && <RecentSubmission />}
 
-      <PlayerSubmissionForm onSubmitFormCallback={submitLine} player={player} />
+      {!revealStatus && <PlayerSubmissionForm onSubmitFormCallback={submitLine} player={player} />}
 
-      <FinalPoem />
+      <FinalPoem poem={linesSubmitted} onRevealCallback={revealPoem} revealStatus={revealStatus} />
 
     </div>
   );
