@@ -7,13 +7,11 @@ const PlayerSubmissionForm = (props) => {
   const [formFields, setFormFields] = useState(EMPTYFORM);  //state to track entire form
 
   const onInputChange = (event) => {
-    const {name, value} = event.target;
+    const {name, value} = event.target;   //practice using destructuring assignment
     const newForm = {
       ...formFields,
-      [name]: value,
+      [name]: value,                      //event.target.name = event.target.value
     }
-    // const newForm = {...formFields};
-    // newForm[event.target.name] = event.target.value;
     setFormFields(newForm);
   };
 
@@ -26,12 +24,11 @@ const PlayerSubmissionForm = (props) => {
 
   return (
     <div className="PlayerSubmissionForm">
+
       <h3>Player Submission Form for Player #{props.player}</h3>
 
       <form className="PlayerSubmissionForm__form" onSubmit={onSubmitForm}>
-
         <div className="PlayerSubmissionForm__poem-inputs">
-
           <span>The</span>
           <input
             name='adj1'
@@ -41,7 +38,6 @@ const PlayerSubmissionForm = (props) => {
             onChange={onInputChange}
             type='text' 
             className={formFields.adj1? 'filled' : 'empty'}/>
-
           <input
             name='noun1'
             title='Type a noun here'
@@ -84,11 +80,12 @@ const PlayerSubmissionForm = (props) => {
             type='text' 
             className={formFields.noun2? 'filled' : 'empty'}/>
           <span>.</span>
-
         </div>
 
         <div className="PlayerSubmissionForm__submit">
-          <input type="submit" 
+          <input 
+            type="submit" 
+            title='Submit Line'
             value="Submit Line" 
             className="PlayerSubmissionForm__submit-btn" />
         </div>
@@ -116,7 +113,9 @@ PlayerSubmissionForm.propTypes = {
 
 export default PlayerSubmissionForm;
 
-
+//Web Accessibility with input tags
+//https://www.coolfields.co.uk/2011/04/accessible-forms-should-every-input-have-a-label/
+//https://www.coolfields.co.uk/2016/05/text-for-screen-readers-only-updated/
 
   // const [formFields, setFormFields] = useState(  //array of strings and objects
   //   [
