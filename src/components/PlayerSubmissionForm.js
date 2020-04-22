@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
-
   const emptyForm = {
     the1: 'The',
     adj1: '',
@@ -20,9 +19,8 @@ const PlayerSubmissionForm = (props) => {
   const onInputChange = (event) => {
     const newForm = {...formFields};
     newForm[event.target.name] = event.target.value;
-    // console.log(newForm);
     setFormFields(newForm);
-  }
+  };
 
   const onSubmitForm = (event) => {
     event.preventDefault();               
@@ -31,7 +29,14 @@ const PlayerSubmissionForm = (props) => {
     props.onSubmitFormCallback(newForm);
     //clear form
     setFormFields(emptyForm);
-  }
+  };
+
+  // const isEmpty = () => {
+  //   return 
+
+  // };
+
+
 
   return (
     <div className="PlayerSubmissionForm">
@@ -47,38 +52,44 @@ const PlayerSubmissionForm = (props) => {
             placeholder='adjective'
             value={formFields.adj1}
             onChange={onInputChange}
-            type='text' />
+            type='text' 
+            className={formFields.adj1? 'filled' : 'empty'}/>
           <input
             name='noun1'
             placeholder='noun'
             value={formFields.noun1}
             onChange={onInputChange}
-            type='text' />
+            type='text' 
+            className={formFields.noun1? 'filled' : 'empty'}/>
           <input
             name='adv'
             placeholder='adverb'
             value={formFields.adv}
             onChange={onInputChange}
-            type='text' />
+            type='text' 
+            className={formFields.adv? 'filled' : 'empty'}/>
           <input
             name='verb'
             placeholder='verb'
             value={formFields.verb}
             onChange={onInputChange}
-            type='text' />
+            type='text' 
+            className={formFields.verb? 'filled' : 'empty'}/>
           <span>the</span>
           <input
             name='adj2'
             placeholder='adjective'
             value={formFields.adj2}
             onChange={onInputChange}
-            type='text' />
+            type='text' 
+            className={formFields.adj2? 'filled' : 'empty'}/>
           <input
             name='noun2'
             placeholder='noun'
             value={formFields.noun2}
             onChange={onInputChange}
-            type='text' />
+            type='text' 
+            className={formFields.noun2? 'filled' : 'empty'}/>
           <span>.</span>
 
         </div>

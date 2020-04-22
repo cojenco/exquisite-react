@@ -39,7 +39,7 @@ const Game = () => {
     setPlayer(1);
   }
 
-  
+
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
       return field.placeholder;
@@ -66,14 +66,15 @@ const Game = () => {
 
       <FinalPoem poem={linesSubmitted} onRevealCallback={revealPoem} revealStatus={revealStatus} />
       
+      {revealStatus &&
       <div className="FinalPoem__reveal-btn-container">
         <input 
           type="button" 
-          value="Reset Game / Play Again" 
+          value="Play Again" 
           className="PlayerSubmissionForm__submit-btn"
           onClick={resetGame}
         />
-      </div>
+      </div>}
 
     </div>
   );
