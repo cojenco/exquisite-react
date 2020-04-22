@@ -37,7 +37,7 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.adj1}
             onChange={onInputChange}
             type='text' 
-            className={formFields.adj1? 'filled' : 'empty'}/>
+            className={formFields.adj1? '' : 'PlayerSubmissionForm__poem-inputs--empty'}/>
           <input
             name='noun1'
             title='Type a noun here'
@@ -45,7 +45,7 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.noun1}
             onChange={onInputChange}
             type='text' 
-            className={formFields.noun1? 'filled' : 'empty'}/>
+            className={formFields.noun1? '' : 'PlayerSubmissionForm__poem-inputs--empty'}/>
           <input
             name='adv'
             title='Type an adverb here'
@@ -53,7 +53,7 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.adv}
             onChange={onInputChange}
             type='text' 
-            className={formFields.adv? 'filled' : 'empty'}/>
+            className={formFields.adv? '' : 'PlayerSubmissionForm__poem-inputs--empty'}/>
           <input
             name='verb'
             title='Type a verb here'
@@ -61,7 +61,7 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.verb}
             onChange={onInputChange}
             type='text' 
-            className={formFields.verb? 'filled' : 'empty'}/>
+            className={formFields.verb? '' : 'PlayerSubmissionForm__poem-inputs--empty'}/>
           <span>the</span>
           <input
             name='adj2'
@@ -70,7 +70,7 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.adj2}
             onChange={onInputChange}
             type='text' 
-            className={formFields.adj2? 'filled' : 'empty'}/>
+            className={formFields.adj2? '' : 'PlayerSubmissionForm__poem-inputs--empty'}/>
           <input
             name='noun2'
             title='Type another noun here'
@@ -78,7 +78,7 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.noun2}
             onChange={onInputChange}
             type='text' 
-            className={formFields.noun2? 'filled' : 'empty'}/>
+            className={formFields.noun2? '' : 'PlayerSubmissionForm__poem-inputs--empty'}/>
           <span>.</span>
         </div>
 
@@ -113,59 +113,6 @@ PlayerSubmissionForm.propTypes = {
 
 export default PlayerSubmissionForm;
 
-//Web Accessibility with input tags
+//Reference: Web Accessibility while using input tags
 //https://www.coolfields.co.uk/2011/04/accessible-forms-should-every-input-have-a-label/
 //https://www.coolfields.co.uk/2016/05/text-for-screen-readers-only-updated/
-
-  // const [formFields, setFormFields] = useState(  //array of strings and objects
-  //   [
-  //     "The", //0
-  //     {
-  //       key: 'adj1', //1
-  //       // placeholder: 'adjective',
-  //       value: '',
-  //     },
-  //     {
-  //       key: 'noun1', //2
-  //       // placeholder: 'noun',
-  //       value: '',
-  //     },
-  //     {
-  //       key: 'adv', //3
-  //       // placeholder: 'adverb',
-  //       value: '',
-  //     },
-  //     {
-  //       key: 'verb', //4
-  //       // placeholder: 'verb',
-  //       value: '',
-  //     },
-  //     "the",  //5
-  //     {
-  //       key: 'adj2',  //6
-  //       // placeholder: 'adjective',
-  //       value: '',
-  //     },
-  //     {
-  //       key: 'noun2', //7
-  //       // placeholder: 'noun',
-  //       value: '',
-  //     },
-  //     ".",
-  //   ]
-  // );
-
-  // const onInputChange = (event) => {
-  //   const newForm = [...formFields].map((field) => {
-  //     if (field.key === event.target.name) {
-  //       field.value = event.target.value;
-  //       return field;
-  //     } else {
-  //       return field;
-  //     }
-  //   });
-
-  //   console.log(newForm);
-  //   setFormFields(newForm);
-  // }
-
