@@ -7,7 +7,7 @@ import RecentSubmission from './RecentSubmission';
 const Game = () => {
 
   const [player, setPlayer] = useState(1);
-  const [linesSubmitted, setlinesSubmitted] = useState([]);  //array of objects
+  const [linesSubmitted, setlinesSubmitted] = useState([]);  //array of objects that represent lines of poem
   const [revealStatus, setRevealStatus] = useState(false);
   
   const submitLine = (newLine) => {
@@ -34,6 +34,7 @@ const Game = () => {
       return field;
     }
   }).join(" ");
+
 
   return (
     <div className="Game">
@@ -64,12 +65,9 @@ const Game = () => {
           onClick={resetGame}
         />
       </div>}
-
     </div>
   );
 }
-
-
 
 
 const FIELDS = [
