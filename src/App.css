@@ -1,5 +1,14 @@
 .App {
   flex: .8;
+  /* background-color: lightsteelblue; */
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://www.publicdomainpictures.net/pictures/310000/velka/papier-dechire-1.png');
+  background-repeat: no-repeat;
+  padding: 1rem 2rem;
+}
+.App__title {
+  text-align: center;
 }
 
 .App__header {
@@ -10,5 +19,5 @@
 
 .App__intro-text {
   font-size: 0.85rem;
-  color: gray;
+  color: black;
 }

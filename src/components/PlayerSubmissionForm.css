@@ -40,5 +40,7 @@
 }
 
 .PlayerSubmissionForm__poem-inputs .empty {
-  background-color: rgb(250, 218, 223);
+  /* background-color: rgb(250, 218, 223); */
+  background-color: #e6c7c2;
+  /* background-color: gold; */
 }
