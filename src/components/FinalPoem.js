@@ -4,14 +4,10 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
 
-  const onRevealClick = () => {
-    props.onRevealCallback();
-  };   //callback func to change reveal state in Game and then send state back again as props
-
-  const readPoem = props.poem.map((line, i) => { 
+  const readPoem = props.poem.map((line, i) => {
     const newLine = Object.values(line).join(' ');
     return <p key={i}>{newLine}</p>;
-  });  // reference: https://www.freecodecamp.org/forum/t/newline-in-react-string-solved/68484/9
+  });  //use <p> tag to skip new line. Reference: https://www.freecodecamp.org/forum/t/newline-in-react-string-solved/68484/9
   
   return (
     <div className="FinalPoem">
@@ -28,7 +24,7 @@ const FinalPoem = (props) => {
           type="button" 
           value="We are finished: Reveal the Poem" 
           className="FinalPoem__reveal-btn" 
-          onClick={onRevealClick}
+          onClick={props.onRevealCallback}
         />
       </div>}
 
@@ -37,8 +33,8 @@ const FinalPoem = (props) => {
 }
 
 FinalPoem.propTypes ={
-  poem: PropTypes.array.isRequired,
-  onRevealCallback: PropTypes.func.isRequired,
+  poem: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onRevealCallback: PropTypes.func.isRequired,  //callback func to change state (revealStatus) in Game and then send state back again as props
   revealStatus: PropTypes.bool.isRequired,
 }
 
