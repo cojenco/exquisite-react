@@ -4,16 +4,21 @@ import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
 
-  const [formFields, setFormFields] = useState(EMPTYFORM);
+  const [formFields, setFormFields] = useState(EMPTYFORM);  //state to track entire form
 
   const onInputChange = (event) => {
-    const newForm = {...formFields};
-    newForm[event.target.name] = event.target.value;
+    const {name, value} = event.target;
+    const newForm = {
+      ...formFields,
+      [name]: value,
+    }
+    // const newForm = {...formFields};
+    // newForm[event.target.name] = event.target.value;
     setFormFields(newForm);
   };
 
   const onSubmitForm = (event) => {
-    event.preventDefault();               //prevent default behavior (i.e)send out HTTP request
+    event.preventDefault();               //prevent default behavior to send out HTTP request
     const newForm = {...formFields};
     props.onSubmitFormCallback(newForm);  //send back form to Game via callback
     setFormFields(EMPTYFORM);             //clear form
@@ -30,13 +35,16 @@ const PlayerSubmissionForm = (props) => {
           <span>The</span>
           <input
             name='adj1'
+            title='Type an adjective here'
             placeholder='adjective'
             value={formFields.adj1}
             onChange={onInputChange}
             type='text' 
             className={formFields.adj1? 'filled' : 'empty'}/>
+
           <input
             name='noun1'
+            title='Type a noun here'
             placeholder='noun'
             value={formFields.noun1}
             onChange={onInputChange}
@@ -44,6 +52,7 @@ const PlayerSubmissionForm = (props) => {
             className={formFields.noun1? 'filled' : 'empty'}/>
           <input
             name='adv'
+            title='Type an adverb here'
             placeholder='adverb'
             value={formFields.adv}
             onChange={onInputChange}
@@ -51,6 +60,7 @@ const PlayerSubmissionForm = (props) => {
             className={formFields.adv? 'filled' : 'empty'}/>
           <input
             name='verb'
+            title='Type a verb here'
             placeholder='verb'
             value={formFields.verb}
             onChange={onInputChange}
@@ -59,6 +69,7 @@ const PlayerSubmissionForm = (props) => {
           <span>the</span>
           <input
             name='adj2'
+            title='Type another adjective here'
             placeholder='adjective'
             value={formFields.adj2}
             onChange={onInputChange}
@@ -66,6 +77,7 @@ const PlayerSubmissionForm = (props) => {
             className={formFields.adj2? 'filled' : 'empty'}/>
           <input
             name='noun2'
+            title='Type another noun here'
             placeholder='noun'
             value={formFields.noun2}
             onChange={onInputChange}
