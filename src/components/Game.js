@@ -57,11 +57,12 @@ const Game = () => {
       <FinalPoem poem={linesSubmitted} onRevealCallback={revealPoem} revealStatus={revealStatus} />
       
       {revealStatus &&
-      <div className="FinalPoem__reveal-btn-container">
+      <div className='FinalPoem__reveal-btn-container'>
         <input 
-          type="button" 
-          value="Play Again" 
-          className="PlayerSubmissionForm__submit-btn"
+          type='button' 
+          value='Play Again' 
+          title='Click button to play again'
+          className='PlayerSubmissionForm__submit-btn'
           onClick={resetGame}
         />
       </div>}
