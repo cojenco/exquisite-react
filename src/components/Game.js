@@ -10,35 +10,22 @@ const Game = () => {
   const [linesSubmitted, setlinesSubmitted] = useState([]);  //array of objects
   const [revealStatus, setRevealStatus] = useState(false);
   
-
   const submitLine = (newLine) => {
-    //push to an array of lines
     const allLines = [...linesSubmitted];
     allLines.push(newLine);
     setlinesSubmitted(allLines);
-
-    console.log('submitted line');
-    console.log(linesSubmitted);
-    //setState
-    // setlinesSubmitted(linesSubmitted + 1);
     setPlayer(player + 1);
-    // console.log(linesSubmitted);
   };
-
 
   const revealPoem = () => {
-    //do something on the game level, probably change state of isRevealed
     setRevealStatus(true);
-
   };
-
 
   const resetGame = () => {
     setRevealStatus(false);
     setlinesSubmitted([]);
     setPlayer(1);
   }
-
 
   const exampleFormat = FIELDS.map((field) => {
     if (field.key) {
@@ -60,9 +47,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      {!revealStatus && linesSubmitted.length > 0 && <RecentSubmission mostRecentLine={linesSubmitted[linesSubmitted.length - 1]} />}
+      {!revealStatus && linesSubmitted.length > 0 && 
+      <RecentSubmission mostRecentLine={linesSubmitted[linesSubmitted.length - 1]} />}
 
-      {!revealStatus && <PlayerSubmissionForm onSubmitFormCallback={submitLine} player={player} />}
+      {!revealStatus && 
+      <PlayerSubmissionForm onSubmitFormCallback={submitLine} player={player} />}
 
       <FinalPoem poem={linesSubmitted} onRevealCallback={revealPoem} revealStatus={revealStatus} />
       
@@ -79,6 +68,8 @@ const Game = () => {
     </div>
   );
 }
+
+
 
 
 const FIELDS = [
