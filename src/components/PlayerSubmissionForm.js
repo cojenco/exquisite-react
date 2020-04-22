@@ -3,18 +3,8 @@ import PropTypes from 'prop-types';
 import './PlayerSubmissionForm.css';
 
 const PlayerSubmissionForm = (props) => {
-  const emptyForm = {
-    the1: 'The',
-    adj1: '',
-    noun1: '',
-    adv: '',
-    verb: '',
-    the2: 'the',
-    adj2: '',
-    noun2: '',
-    period: '.',
-  };
-  const [formFields, setFormFields] = useState(emptyForm);
+
+  const [formFields, setFormFields] = useState(EMPTYFORM);
 
   const onInputChange = (event) => {
     const newForm = {...formFields};
@@ -23,20 +13,11 @@ const PlayerSubmissionForm = (props) => {
   };
 
   const onSubmitForm = (event) => {
-    event.preventDefault();               
-    //send back form to Game via callback
+    event.preventDefault();               //prevent default behavior (i.e)send out HTTP request
     const newForm = {...formFields};
-    props.onSubmitFormCallback(newForm);
-    //clear form
-    setFormFields(emptyForm);
+    props.onSubmitFormCallback(newForm);  //send back form to Game via callback
+    setFormFields(EMPTYFORM);             //clear form
   };
-
-  // const isEmpty = () => {
-  //   return 
-
-  // };
-
-
 
   return (
     <div className="PlayerSubmissionForm">
@@ -97,13 +78,24 @@ const PlayerSubmissionForm = (props) => {
         <div className="PlayerSubmissionForm__submit">
           <input type="submit" 
             value="Submit Line" 
-            className="PlayerSubmissionForm__submit-btn" 
-          />
+            className="PlayerSubmissionForm__submit-btn" />
         </div>
       </form>
     </div>
   );
 }
+
+const EMPTYFORM = {
+  the1: 'The',
+  adj1: '',
+  noun1: '',
+  adv: '',
+  verb: '',
+  the2: 'the',
+  adj2: '',
+  noun2: '',
+  period: '.',
+};
 
 PlayerSubmissionForm.propTypes = {
   player: PropTypes.number.isRequired,
