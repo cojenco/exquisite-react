@@ -9,6 +9,12 @@ const FinalPoem = (props) => {
     return <p key={i}>{newLine}</p>;
   });  //use <p> tag to skip new line. Reference: https://www.freecodecamp.org/forum/t/newline-in-react-string-solved/68484/9
   
+  const onClickReveal = () => {
+    if (props.poem.length > 0) {
+      props.onRevealCallback();
+    }
+  };
+
   return (
     <div className="FinalPoem">
 
@@ -24,7 +30,7 @@ const FinalPoem = (props) => {
           type="button" 
           value="We are finished: Reveal the Poem" 
           className="FinalPoem__reveal-btn" 
-          onClick={props.onRevealCallback}
+          onClick={onClickReveal}
         />
       </div>}
 
