@@ -17,9 +17,15 @@ const PlayerSubmissionForm = (props) => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();               //prevent default behavior to send out HTTP request
-    const newForm = {...formFields};
-    props.onSubmitFormCallback(newForm);  //send back form to Game via callback
-    setFormFields(EMPTYFORM);             //clear form
+    if (allFieldsFilled()) {
+      const newForm = {...formFields};
+      props.onSubmitFormCallback(newForm);  //send back form to Game via callback
+      setFormFields(EMPTYFORM);             //clear form
+    }
+  };
+
+  const allFieldsFilled = () => {
+    return Object.values(formFields).every((value) => value !== '');
   };
 
   return (
@@ -92,7 +98,7 @@ const PlayerSubmissionForm = (props) => {
       </form>
     </div>
   );
-}
+};
 
 const EMPTYFORM = {
   the1: 'The',
